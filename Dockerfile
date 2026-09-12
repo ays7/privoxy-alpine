@@ -1,6 +1,13 @@
 # Use the latest stable Alpine Linux image
 FROM alpine:latest
 
+LABEL org.opencontainers.image.title="privoxy-alpine" \
+      org.opencontainers.image.description="Lightweight Privoxy proxy based on Alpine Linux" \
+      org.opencontainers.image.url="https://github.com/ays7/privoxy-alpine" \
+      org.opencontainers.image.source="https://github.com/ays7/privoxy-alpine" \
+      org.opencontainers.image.licenses="Unlicense" \
+      org.opencontainers.image.authors="Alexey Shakula"
+
 # Install Privoxy, prepare default configuration files, and allow external connections
 RUN apk add --no-cache privoxy && \
     for f in /etc/privoxy/*.new; do [ -f "$f" ] && cp -a "$f" "${f%.new}"; done && \
