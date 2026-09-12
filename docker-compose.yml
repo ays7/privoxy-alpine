@@ -1,0 +1,11 @@
+services:
+  privoxy:
+    image: ghcr.io/ays7/privoxy-alpine:latest
+    pull_policy: always
+    container_name: privoxy
+    restart: unless-stopped
+    ports:
+      - "8118:8118"
+    # Optional: mount custom configuration
+    # volumes:
+    #   - ./config:/etc/privoxy/config:ro
